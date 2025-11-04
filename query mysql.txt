@@ -1,0 +1,98 @@
+CREATE DATABASE universitymanagement;
+
+use universitymanagement;
+create table teacher(name varchar(40), fname varchar(40), empID varchar(40), dob varchar(40), address varchar(40), phone varchar(40), email varchar(40), class_X varchar(40), class_XII varchar(40), aadhar varchar(40), education varchar(40), department varchar(40));
+select * from teacher;
+
+create table student(name varchar(40), fname varchar(40), rollNo varchar(40), dob varchar(40), address varchar(40), phone varchar(40), email varchar(40), class_X varchar(40), class_XII varchar(40), aadhar varchar(40), course varchar(40), branch varchar(40));
+select * from student;
+
+create table studentLeave(rollNo varchar(40), date varchar(20), time varchar(20));
+select * from studentLeave;
+
+create table teacherLeave(empID varchar(20), date varchar(20), time varchar(20));
+select * from teacherLeave;
+
+create table subject (rollNO varchar(20), semester varchar(20), subj1 varchar(50),subj2 varchar(50),subj3 varchar(50),subj4 varchar(50),subj5 varchar(50));
+select * from subject;
+
+create table marks (rollNO varchar(20), semester varchar(20), mrk1 varchar(50),mrk2 varchar(50),mrk3 varchar(50),mrk4 varchar(50),mrk5 varchar(50));
+select * from marks;
+
+create table fee(course varchar(20), `Semester 1` varchar(20), `Semester 2` varchar(20), `Semester 3` varchar(20), `Semester 4` varchar(20), `Semester 5` varchar(20), `Semester 6` varchar(20), `Semester 7` varchar(20), `Semester 8` varchar(20));
+select * from fee;
+
+
+insert into fee values("BTech", "49000", "43000","43000","43000","43000","43000","43000","43000");
+
+insert into fee values("BSc", "44000", "35000","35000","35000","35000","35000","","");
+
+insert into fee values("BCA", "39000", "34000","34000","34000","34000","34000","","");
+
+insert into fee values("MTech", "70000", "60000","60000","60000","","","","");
+
+insert into fee values("MSc", "44000", "45000","45000","45000","","","","");
+
+insert into fee values("MCA", "66000", "42000","42000","49000","","","","");
+
+insert into fee values("BCom", "32000", "20000","20000","20000","20000","20000","","");
+
+insert into fee values("MCom", "46000", "30000","30000","30000","","","","");
+
+DROP TABLE fee;
+
+
+create table feeCollege (rollNo varchar(20), course varchar(20), branch varchar(20), semester varchar(20), total varchar(20));
+select * from feecollege;
+
+-- 1. Rename the old 'date' column
+ALTER TABLE studentLeave RENAME COLUMN date TO start_date;
+
+-- 2. Add the new 'end_date' column
+ALTER TABLE studentLeave ADD COLUMN end_date VARCHAR(50);
+
+-- 3. Add the 'status' column
+ALTER TABLE studentLeave ADD COLUMN status VARCHAR(20) DEFAULT 'Pending';
+
+
+-- 1. Rename the old 'date' column
+ALTER TABLE teacherLeave RENAME COLUMN date TO start_date;
+
+-- 2. Add the new 'end_date' column
+ALTER TABLE teacherLeave ADD COLUMN end_date VARCHAR(50);
+
+-- 3. Add the 'status' column
+ALTER TABLE teacherLeave ADD COLUMN status VARCHAR(20) DEFAULT 'Pending';
+
+
+USE universitymanagement;
+
+CREATE TABLE achievements (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100) NOT NULL,
+    achiever_type VARCHAR(20),  -- 'Student', 'Faculty', or 'College'
+    achiever_name VARCHAR(100), -- Can be student/faculty name
+    description TEXT,
+    image_path VARCHAR(255),  -- This is the path to the image file
+    date_achieved DATE
+);
+
+USE universitymanagement;
+
+CREATE TABLE notices (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(150) NOT NULL,
+    content TEXT NOT NULL,
+    target_audience VARCHAR(50) DEFAULT 'All', -- 'All', 'Students', 'Faculty', 'Specific Department' etc.
+    posted_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Automatically set when notice is created
+    expiry_date DATE, -- Optional: Date after which notice might be hidden/archived
+    posted_by VARCHAR(100) -- Optional: Store who posted it (e.g., Admin username)
+    -- attachment_path VARCHAR(255) -- Optional: Add later if needed
+    -- priority VARCHAR(20) DEFAULT 'Normal' -- Optional: Add later if needed
+);
+
+USE universitymanagement;
+
+ALTER TABLE teacherLeave RENAME COLUMN date TO start_date;
+ALTER TABLE teacherLeave ADD COLUMN end_date VARCHAR(50);
+ALTER TABLE teacherLeave ADD COLUMN status VARCHAR(20) DEFAULT 'Pending';
