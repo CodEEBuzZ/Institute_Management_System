@@ -6,28 +6,65 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class main_class extends JFrame implements ActionListener {
+    private SlidingImagePanel imagePanel;
+    private String[] imagePaths = {
+            "icon/CollegeGate.jpeg",
+            "icon/mainGate.jpeg",
+            "icon/clglane.jpeg",
+            "icon/CSEbuilding.jpeg",
+            "icon/clglane1.jpeg"
+    };
+    private String[] imageTexts = {
+            "Welcome to GCETTS College",
+            "Beautiful College Lane",
+            "CSE Building",
+            "Peaceful Campus View",
+            "Main Gate Entrance"
+    };
+    private int currentImageIndex = 0;
 
     main_class() {
+         setLayout(null); 
         // --- Setup Background Image ---
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/third.jpg"));
-        Image i2 = i1.getImage().getScaledInstance(1540, 750, Image.SCALE_DEFAULT);
-        ImageIcon i3 = new ImageIcon(i2);
-        JLabel img = new JLabel(i3);
-        add(img);
+         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("icon/GCETTS logo.jpg"));
+        setIconImage(icon.getImage());
+
+
+        ImageIcon firstIcon = new ImageIcon(ClassLoader.getSystemResource(imagePaths[0]));
+        Image firstImage = firstIcon.getImage().getScaledInstance(1510, 750, Image.SCALE_SMOOTH);
+        imagePanel = new SlidingImagePanel(firstImage);
+        imagePanel.setBackground(Color.BLACK);   // avoid white/black flicker
+        imagePanel.setBounds(0, 0, 1510, 750);
+        add(imagePanel);
+
+        // Start the slideshow
+        startImageLoop();
+
+
+        UIManager.put("Menu.font", new Font("Segoe UI", Font.BOLD, 18));
+        UIManager.put("MenuItem.font", new Font("Segoe UI", Font.PLAIN, 16));
+        UIManager.put("MenuBar.font", new Font("Segoe UI", Font.BOLD, 18));
+
+
 
         // --- Create Menu Bar ---
         JMenuBar mb = new JMenuBar();
+         mb.setLayout(new FlowLayout(FlowLayout.CENTER, 40, 5));
 
         // --- 1. New Information ---
         JMenu newInfo = new JMenu("New Information");
         newInfo.setForeground(Color.BLACK);
         mb.add(newInfo);
 
+        // New Faculty Information
+        
         JMenuItem facultyInfo = new JMenuItem("New Faculty Information");
         facultyInfo.setBackground(Color.WHITE);
         facultyInfo.addActionListener(this);
         newInfo.add(facultyInfo);
 
+        // New Student Information
+        
         JMenuItem studentInfo = new JMenuItem("New Student Information");
         studentInfo.setBackground(Color.WHITE);
         studentInfo.addActionListener(this);
@@ -39,11 +76,13 @@ public class main_class extends JFrame implements ActionListener {
         details.setForeground(Color.BLACK);
         mb.add(details);
 
+        // Faculty details
         JMenuItem facultyDetails = new JMenuItem("View Faculty Details");
         facultyDetails.setBackground(Color.WHITE);
         facultyDetails.addActionListener(this);
         details.add(facultyDetails);
 
+        // Students details
         JMenuItem studentDetails = new JMenuItem("View Student Details");
         studentDetails.setBackground(Color.WHITE);
         studentDetails.addActionListener(this);
@@ -55,11 +94,13 @@ public class main_class extends JFrame implements ActionListener {
         leave.setForeground(Color.BLACK);
         mb.add(leave);
 
+        // Faculty leave
         JMenuItem facultyLeave = new JMenuItem("Faculty Leave");
         facultyLeave.setBackground(Color.WHITE);
         facultyLeave.addActionListener(this);
         leave.add(facultyLeave);
 
+        // Student leave
         JMenuItem studentLeave = new JMenuItem("Student Leave");
         studentLeave.setBackground(Color.WHITE);
         studentLeave.addActionListener(this);
@@ -71,11 +112,13 @@ public class main_class extends JFrame implements ActionListener {
         leaveDetails.setForeground(Color.BLACK);
         mb.add(leaveDetails);
 
+        // Faculty leave details
         JMenuItem facultyLeaveDetails = new JMenuItem("Faculty Leave Details");
         facultyLeaveDetails.setBackground(Color.WHITE);
         facultyLeaveDetails.addActionListener(this);
         leaveDetails.add(facultyLeaveDetails);
 
+        // Student leave details
         JMenuItem studentLeaveDetails = new JMenuItem("Student Leave Details");
         studentLeaveDetails.setBackground(Color.WHITE);
         studentLeaveDetails.addActionListener(this);
@@ -103,11 +146,13 @@ public class main_class extends JFrame implements ActionListener {
         updateInfo.setForeground(Color.BLACK);
         mb.add(updateInfo);
 
+        //Update Faculty Information
         JMenuItem updateFacultyInfo = new JMenuItem("Update Faculty Details");
         updateFacultyInfo.setBackground(Color.WHITE);
         updateFacultyInfo.addActionListener(this);
         updateInfo.add(updateFacultyInfo);
 
+        //Update Student Information
         JMenuItem updateStudentInfo = new JMenuItem("Update Student Details");
         updateStudentInfo.setBackground(Color.WHITE);
         updateStudentInfo.addActionListener(this);
@@ -231,6 +276,100 @@ public class main_class extends JFrame implements ActionListener {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Good practice
     }
+    static class SlidingImagePanel extends JPanel {
+        private Image currentImage;
+        private Image nextImage;
+        private int offsetX = 0;
+        private Timer slideTimer;
+        private String currentText = ""; // Text to display after slide
+
+        public SlidingImagePanel(Image firstImage) {
+            setDoubleBuffered(true);
+            setBackground(Color.BLACK);
+            this.currentImage = firstImage;
+        }
+
+        public void setImages(Image current, Image next, String textAfterSlide) {
+            this.currentImage = current;
+            this.nextImage = next;
+            this.offsetX = 0;
+            this.currentText = ""; // hide text until slide finishes
+
+            if (slideTimer != null && slideTimer.isRunning()) slideTimer.stop();
+
+            slideTimer = new Timer(10, e -> {
+                offsetX += 20;
+                if (offsetX >= getWidth()) {
+                    currentImage = nextImage;
+                    nextImage = null;
+                    offsetX = 0;
+
+                    // Show text after slide completes
+                    currentText = textAfterSlide;
+
+                    slideTimer.stop();
+                }
+                repaint();
+            });
+            slideTimer.start();
+        }
+
+          @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+
+            if (currentImage != null)
+                g.drawImage(currentImage, -offsetX, 0, getWidth(), getHeight(), this);
+            if (nextImage != null)
+                g.drawImage(nextImage, getWidth() - offsetX, 0, getWidth(), getHeight(), this);
+
+            // Draw text centered
+            if (currentText != null && !currentText.isEmpty()) {
+                g.setFont(new Font("Segoe UI", Font.BOLD, 48)); // larger font
+                g.setColor(Color.YELLOW);
+
+                // Measure the text
+                FontMetrics fm = g.getFontMetrics();
+                int textWidth = fm.stringWidth(currentText);
+                int textHeight = fm.getHeight();
+
+                // Calculate coordinates for centered text
+                int x = (getWidth() - textWidth) / 2;
+                int y = (getHeight() - textHeight) / 2 + fm.getAscent();
+
+                g.drawString(currentText, x, y);
+            }
+        }
+
+    }
+
+    private void updateImage() {
+        ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex]));
+        int w = getWidth() > 0 ? getWidth() : 1000;
+        int h = getHeight() > 0 ? getHeight() : 750;
+        Image scaledImage = icon.getImage().getScaledInstance(w, h, Image.SCALE_DEFAULT);
+
+    }
+    
+    private void startImageLoop() {
+        Timer timer = new Timer(5000, e -> {
+            int nextIndex = (currentImageIndex + 1) % imagePaths.length;
+
+            ImageIcon currentIcon = new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex]));
+            Image current = currentIcon.getImage().getScaledInstance(imagePanel.getWidth(), imagePanel.getHeight(), Image.SCALE_SMOOTH);
+
+            ImageIcon nextIcon = new ImageIcon(ClassLoader.getSystemResource(imagePaths[nextIndex]));
+            Image next = nextIcon.getImage().getScaledInstance(imagePanel.getWidth(), imagePanel.getHeight(), Image.SCALE_SMOOTH);
+
+            // pass the text to appear AFTER slide completes
+            imagePanel.setImages(current, next, imageTexts[currentImageIndex]);
+
+            currentImageIndex = nextIndex;
+        });
+        timer.start();
+    }
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
