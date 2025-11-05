@@ -35,7 +35,7 @@ public class FeeStructure extends JFrame implements ActionListener{
         add(js);
 
 
-        setSize(1000,700);
+        setSize(1000,500);
         setLocation(250,50);
         setLayout(null);
         setVisible(true);
