@@ -17,8 +17,7 @@ public class ExaminationDetails extends JFrame implements ActionListener {
     JTable table;
 
     ExaminationDetails(){
-
-        getContentPane().setBackground(new Color(241,252,210));
+        getContentPane().setBackground(new Color(186,248,125));
 
 
         JLabel heading = new JLabel("Check Result");
@@ -70,8 +69,8 @@ public class ExaminationDetails extends JFrame implements ActionListener {
         });
 
 
-        setSize(1000,475);
-        setLocation(300,100);
+        setSize(1000,500);
+        setLocation(250,50);
         setLayout(null);
         setVisible(true);
     }
