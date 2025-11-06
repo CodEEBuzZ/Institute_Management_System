@@ -69,7 +69,7 @@ public class AchievementGallery extends JFrame implements ActionListener {
         loadAchievements("All"); // Load all initially
 
         setSize(1000, 700);
-        setLocationRelativeTo(null);
+        setLocation(250, 50);
         setVisible(true);
     }
 
