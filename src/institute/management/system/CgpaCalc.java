@@ -17,7 +17,7 @@ public class CgpaCalc extends JFrame implements ActionListener {
 
     CgpaCalc() {
         setTitle("CGPA Calculator (Cumulative)");
-        getContentPane().setBackground(new Color(240, 255, 230));
+        getContentPane().setBackground(new Color(186, 248, 125));
         setLayout(null);
 
         JLabel heading = new JLabel("Cumulative Grade Point Average (CGPA)");
@@ -78,7 +78,7 @@ public class CgpaCalc extends JFrame implements ActionListener {
         add(resultLabel);
 
         setSize(500, 100 + (MAX_SEMESTERS * 30) + 200); // Adjust size dynamically
-        setLocation(400, 50);
+        setLocation(250, 50);
         setVisible(true);
     }
 
