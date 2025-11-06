@@ -148,9 +148,9 @@ public class StudentFeeForm extends JFrame implements ActionListener{
         add(cancel);
 
 
-        setSize(900,500);
+        setSize(1000,500);
         setLayout(null);
-        setLocation(300,100);
+        setLocation(250,50);
         setVisible(true);
     }
 
