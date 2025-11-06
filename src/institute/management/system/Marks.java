@@ -16,7 +16,7 @@ public class Marks extends JFrame implements ActionListener {
         setLocation(500, 100);
         setLayout(null);
 
-        getContentPane().setBackground(new Color(210, 252, 248));
+        getContentPane().setBackground(new Color(186, 248, 125));
 
         JLabel heading = new JLabel("Dream University");
         heading.setBounds(100, 10, 500, 25);
