@@ -18,7 +18,7 @@ public class StudentLeave extends JFrame implements ActionListener {
 
     StudentLeave() {
         setTitle("Apply Leave (Student)");
-        getContentPane().setBackground(new Color(210, 232, 252));
+        getContentPane().setBackground(new Color(255, 255, 255));
         setLayout(null);
 
         JLabel heading = new JLabel("Apply Leave (Student)");
