@@ -18,7 +18,7 @@ public class DgpaCalc extends JFrame implements ActionListener {
 
     DgpaCalc() {
         setTitle("DGPA Calculator (Degree GPA)");
-        getContentPane().setBackground(new Color(230, 255, 240));
+        getContentPane().setBackground(new Color(186, 248, 125));
         setLayout(null);
 
         JLabel heading = new JLabel("Degree Grade Point Average (DGPA)");
@@ -90,7 +90,7 @@ public class DgpaCalc extends JFrame implements ActionListener {
         add(resultLabel);
 
         setSize(480, 150 + (MAX_YGPAS * 35) + 150); // Dynamic size
-        setLocation(450, 100);
+        setLocation(250, 50);
         setVisible(true);
     }
 
