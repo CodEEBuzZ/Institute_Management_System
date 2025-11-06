@@ -34,8 +34,8 @@ public class NoticeBoard extends JFrame {
 
         loadNotices(); // Load notices when the board opens
 
-        setSize(800, 600);
-        setLocationRelativeTo(null); // Center the window
+        setSize(900, 500);
+        setLocation(250,50); // Center the window
         setVisible(true);
     }
 

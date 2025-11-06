@@ -83,7 +83,7 @@ public class SgpaCalc extends JFrame implements ActionListener {
 
 
         setSize(600, 500);
-        setLocation(400, 150);
+        setLocation(250, 50);
         setVisible(true);
     }
 

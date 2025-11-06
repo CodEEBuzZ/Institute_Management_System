@@ -18,7 +18,7 @@ public class TeacherLeave extends JFrame implements ActionListener {
 
     TeacherLeave() { // Constructor name corrected from Teacher Leave()
         setTitle("Apply Leave (Faculty)");
-        getContentPane().setBackground(new Color(210, 232, 252));
+        getContentPane().setBackground(new Color(255, 255, 255));
         setLayout(null);
 
         JLabel heading = new JLabel("Apply Leave (Faculty)"); // Title updated
@@ -92,8 +92,8 @@ public class TeacherLeave extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         add(cancel);
 
-        setSize(500, 550);
-        setLocation(550, 100);
+        setSize(510, 500);
+        setLocation(250, 50);
         setVisible(true);
     }
 

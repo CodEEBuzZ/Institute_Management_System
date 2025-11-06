@@ -111,7 +111,7 @@ public class YgpaCalc extends JFrame implements ActionListener {
         add(southPanel, BorderLayout.SOUTH);
 
         setSize(800, 600);
-        setLocation(300, 100);
+        setLocation(250, 50);
         setVisible(true);
     }
 

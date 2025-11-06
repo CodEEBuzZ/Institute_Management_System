@@ -15,7 +15,7 @@ public class StudentLeaveDetails extends JFrame implements ActionListener {
     JButton search , cancel , print;
 
     StudentLeaveDetails(){
-        getContentPane().setBackground(new Color(250,172,206));
+        getContentPane().setBackground(new Color(186, 248, 125));
 
         JLabel heading = new JLabel("Search by Roll Number");
         heading.setBounds(20,20,150,20);
@@ -66,8 +66,8 @@ public class StudentLeaveDetails extends JFrame implements ActionListener {
         add(cancel);
 
 
-        setSize(900,700);
-        setLocation(300,100);
+        setSize(900,500);
+        setLocation(250,50);
         setLayout(null);
         setVisible(true);
 

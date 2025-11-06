@@ -23,7 +23,7 @@ public class AddStudent extends JFrame implements ActionListener {
 
     AddStudent() {
         setTitle("New Student Details");
-        getContentPane().setBackground(new Color(210, 230, 255)); // Light blue color
+        getContentPane().setBackground( Color.WHITE);
         setLayout(null);
 
         JLabel heading = new JLabel("New Student Details");
@@ -204,8 +204,8 @@ public class AddStudent extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         add(cancel);
 
-        setSize(900, 650); // Increased height for new fields
-        setLocation(350, 50);
+        setSize(1000, 500); // Increased height for new fields
+        setLocation(250, 50);
         setLayout(null);
         setVisible(true);
     }

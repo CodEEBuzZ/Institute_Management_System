@@ -81,7 +81,7 @@ public class PostNotice extends JFrame implements ActionListener {
         add(btnCancel);
 
         setSize(600, 500);
-        setLocationRelativeTo(null); // Center the window
+        setLocation(250,50); // Center the window
         setVisible(true);
     }
 

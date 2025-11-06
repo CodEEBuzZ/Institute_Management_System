@@ -50,7 +50,7 @@ public class SgpaToPercentageCalc extends JFrame implements ActionListener {
         add(resultLabel);
 
         setSize(450, 300);
-        setLocation(500, 200);
+        setLocation(250, 50);
         setVisible(true);
     }
 

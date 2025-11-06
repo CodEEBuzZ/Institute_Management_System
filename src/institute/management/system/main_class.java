@@ -37,7 +37,7 @@ public class main_class extends JFrame implements ActionListener {
         imagePanel.setBounds(0, 0, 1510, 750);
         add(imagePanel);
 
-        // Start the slideshow
+
         startImageLoop();
 
 
