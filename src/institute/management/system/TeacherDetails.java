@@ -14,7 +14,7 @@ public class TeacherDetails extends JFrame implements ActionListener {
     JButton search, print, update, add, cancel, delete;
 
     TeacherDetails() {
-        getContentPane().setBackground(new Color(192, 164, 252));
+        getContentPane().setBackground(new Color(186,248, 125));
 
         JLabel heading = new JLabel("Search by Employee ID");
         heading.setBounds(20, 20, 150, 20);
@@ -78,8 +78,8 @@ public class TeacherDetails extends JFrame implements ActionListener {
         add(cancel);
 
         setLayout(null);
-        setSize(900, 700);
-        setLocation(300, 100);
+        setSize(910,500);
+        setLocation(250, 50);
         setVisible(true);
     }
 
