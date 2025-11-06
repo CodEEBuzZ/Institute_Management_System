@@ -91,8 +91,8 @@ public class StudentLeave extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         add(cancel);
 
-        setSize(500, 550);
-        setLocation(550, 100);
+        setSize(510, 500);
+        setLocation(250, 50);
         setVisible(true);
     }
 
