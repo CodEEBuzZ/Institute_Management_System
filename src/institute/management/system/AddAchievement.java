@@ -21,7 +21,7 @@ public class AddAchievement extends JFrame implements ActionListener {
 
     AddAchievement() {
         setTitle("Add New Achievement");
-        getContentPane().setBackground(new Color(230, 255, 230));
+        getContentPane().setBackground(new Color(186, 248, 125));
         setLayout(null);
 
         JLabel heading = new JLabel("Add New Achievement");
@@ -106,8 +106,8 @@ public class AddAchievement extends JFrame implements ActionListener {
         btnCancel.addActionListener(this);
         add(btnCancel);
 
-        setSize(600, 550);
-        setLocation(400, 100);
+        setSize(600, 500);
+        setLocation(250, 50);
         setVisible(true);
     }
 
