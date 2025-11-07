@@ -22,7 +22,7 @@ public class UpdateTeacher extends JFrame implements ActionListener {
 
     UpdateTeacher() { // Corrected constructor name
         setTitle("Update Teacher Details");
-        getContentPane().setBackground(new Color(230, 210, 252)); // Light purple
+        getContentPane().setBackground(new Color(255, 255, 255)); // Light purple
         setLayout(null);
 
         JLabel heading = new JLabel("Update Teacher Details");
@@ -237,8 +237,8 @@ public class UpdateTeacher extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         add(cancel);
 
-        setSize(900, 600); // Adjusted size
-        setLocation(350, 50);
+        setSize(900, 500); // Adjusted size
+        setLocation(250, 50);
         setVisible(true);
     }
 

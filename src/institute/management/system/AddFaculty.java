@@ -21,9 +21,8 @@ public class AddFaculty extends JFrame implements ActionListener {
     long f4 = Math.abs(ran.nextLong() % 9000L + 1000L);
 
     AddFaculty() {
+        getContentPane().setBackground(Color.WHITE);
         setTitle("New Teacher Details");
-        getContentPane().setBackground(new Color(220, 220, 255)); // Light purple color
-        setLayout(null);
 
         JLabel heading = new JLabel("New Teacher Details");
         heading.setBounds(310, 30, 500, 50);
@@ -202,8 +201,8 @@ public class AddFaculty extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         add(cancel);
 
-        setSize(900, 650); // Increased height for new fields
-        setLocation(350, 50);
+        setSize(1000, 500); // Increased height for new fields
+        setLocation(250, 50);
         setLayout(null);
         setVisible(true);
     }

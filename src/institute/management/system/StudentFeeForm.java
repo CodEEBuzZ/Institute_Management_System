@@ -17,9 +17,9 @@ public class StudentFeeForm extends JFrame implements ActionListener{
 
     StudentFeeForm(){
 
-        getContentPane().setBackground(new Color(210,252,251));
+        getContentPane().setBackground( Color.WHITE);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/fee.png"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/fees_image.png"));
         Image i2 = i1.getImage().getScaledInstance(500,300,Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel img = new JLabel(i3);
@@ -148,9 +148,9 @@ public class StudentFeeForm extends JFrame implements ActionListener{
         add(cancel);
 
 
-        setSize(900,500);
+        setSize(910,500);
         setLayout(null);
-        setLocation(300,100);
+        setLocation(250,50);
         setVisible(true);
     }
 

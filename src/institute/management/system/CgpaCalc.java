@@ -78,7 +78,7 @@ public class CgpaCalc extends JFrame implements ActionListener {
         add(resultLabel);
 
         setSize(500, 100 + (MAX_SEMESTERS * 30) + 200); // Adjust size dynamically
-        setLocation(400, 50);
+        setLocation(250, 50);
         setVisible(true);
     }
 

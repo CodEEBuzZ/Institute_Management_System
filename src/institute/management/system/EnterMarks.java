@@ -16,9 +16,9 @@ public class EnterMarks extends JFrame implements ActionListener {
     JButton submit, cancel;
 
  ;   EnterMarks(){
-        getContentPane().setBackground(new Color(252,245,210));
+        getContentPane().setBackground(new Color(255,255,255));
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/exam.png"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/Enter_Marks.png"));
         Image i2 = i1.getImage().getScaledInstance(400,300,Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel img = new JLabel(i3);
@@ -124,7 +124,7 @@ public class EnterMarks extends JFrame implements ActionListener {
 
         setSize(1000,500);
         setLayout(null);
-        setLocation(300,150);
+        setLocation(250,50);
         setVisible(true);
     }
 

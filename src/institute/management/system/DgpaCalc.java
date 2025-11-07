@@ -90,7 +90,7 @@ public class DgpaCalc extends JFrame implements ActionListener {
         add(resultLabel);
 
         setSize(480, 150 + (MAX_YGPAS * 35) + 150); // Dynamic size
-        setLocation(450, 100);
+        setLocation(250, 50);
         setVisible(true);
     }
 
